@@ -15,9 +15,9 @@ public class Application {
 	 */
 	public static void main(String[] args)
 	{
-		System.out.println("Creating a tree of height "+"3");
+		System.out.println("Creating a tree of height "+"4");
 		Tree aTree=new Tree();//Creates a tree with root
-		Node root=aTree.generatePracticeTree((3));
+		Node root=aTree.generatePracticeTree((4));
 		DepthFirstSearch aSearch=new DepthFirstSearch();
 		aSearch.DFS(root);
 		System.out.println("The height of the tree is: " + aSearch.getHeight());

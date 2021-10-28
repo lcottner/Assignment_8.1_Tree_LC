@@ -1,7 +1,6 @@
 
-
-/**
- * @author njohnson3
+/*
+ @author njohnson3
  *
  */
 import java.util.Queue; // import the ArrayList class
@@ -10,6 +9,7 @@ public class Tree {
 	
 	private int height;
 	private Node root;
+	private Node currentNode;
 	
 	
 	public Tree()
@@ -31,10 +31,20 @@ public class Tree {
 	 */
 	public void setRoot(Node root) {
 		this.root = root;
-		
+		currentNode=root;
 	}
-
-
+	/**
+	 * @return the currentNode
+	 */
+	public Node getCurrentNode() {
+		return currentNode;
+	}
+	/**
+	 * @param currentNode the currentNode to set
+	 */
+	public void setCurrentNode(Node currentNode) {
+		this.currentNode = currentNode;
+	}
 	//returns the root node
 	public Node generatePracticeTree(int height)
 	{
@@ -50,25 +60,22 @@ public class Tree {
 	   //Put them in the child queue
 	   //int value=pn.getData();
 		
+	   	childQ.add(pn);
 	   	System.out.println ("Root Node value: "+pn.getData());
 		int value=pn.getData();
-	   	level++;
-		value++; 
-	   	System.out.println("Adding Left Child: "+(value));
-		 pn.setlChild(new Node(value));
-		 childQ.add(pn.getlChild());
-		 value++;
-		 System.out.println("Adding Right Child: "+(value));
-		 pn.setrChild(new Node(value));
-		 childQ.add(pn.getrChild());	 
-	   level++;
+	   	
+		 
+	   	
 	   //Remove the front of the queue
 	   //Create its children
 	   //Put them in the queue
 		 //Data is just parent data+1or 2 depending
-	   while (level<(height+1) && !childQ.isEmpty())
+	   while (level<(height) && !childQ.isEmpty())
 			 {
-				 pn=childQ.remove();
+				 System.out.println("Level is: "+level);
+				 for(int i=1;i<=Math.pow(2,(level-1));i++)
+				 {
+		   		pn=childQ.remove();
 				 System.out.println("Parent Node value: "+pn.getData());
 				 value++;
 				 System.out.println("Adding Left Child: "+(value));
@@ -78,8 +85,8 @@ public class Tree {
 				 System.out.println("Adding Right Child: "+(value));
 				 pn.setrChild(new Node(value));
 				 childQ.add(pn.getrChild());
-				 
-				 pn=childQ.remove();
+				 }
+				 /*
 				 
 				 System.out.println("Parent Node value: "+pn.getData());
 				 value++;
@@ -90,8 +97,8 @@ public class Tree {
 				 System.out.println("Adding Right Child: "+(value));
 				 pn.setrChild(new Node(value));
 				 childQ.add(pn.getrChild());
-				 
-				 level++;
+				 */
+				 level++;System.out.println("Level: "+level);
 			 }
 			 
 		
